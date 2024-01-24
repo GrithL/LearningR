@@ -2,6 +2,8 @@ TODO: Add more to the title of your project here
 xxx
 # LearningR:
 
+A random sentence.
+
 TODO: Give a brief description of what your project is about
 
 This project...
