@@ -3,6 +3,7 @@ xxx
 # LearningR:
 
 A random sentence.
+A new random sentence.
 
 TODO: Give a brief description of what your project is about
 
