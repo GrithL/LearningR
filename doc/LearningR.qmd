@@ -4,6 +4,24 @@ author: "Grith L"
 format: html
 ---
 
+- Grith L
+- Boerneafd.
+- Herlev Hospital
+
+# Introduction
+
+# Methods and Results
+## Analysis
+**Data**
+*Analysis*
+
+```{r}
+2+2
+```
+
+
+# Discussion
+
 ```{r setup}
 #| message: FALSE
 #| warning: FALSE
@@ -33,3 +51,31 @@ NHANES_small %>%
   ungroup() %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status")
 ```
+##Prettier table
+```{r}
+#| echo: false
+NHANES_small %>%
+  filter(!is.na(diabetes)) %>%
+  group_by(diabetes, education) %>%
+  summarise(
+    mean_age = mean(age, na.rm = TRUE),
+    mean_bmi = mean(bmi, na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  # 2. Round the means to 1 digit and
+  # modify the `education` column so that male and female get capitalized.
+  mutate(
+    mean_age = round(mean_age, 1),
+    mean_bmi = round(mean_bmi, 1),
+    education = str_to_sentence(education)
+  ) %>%
+  # 3. Rename `diabetes` to `"Diabetes Status"` and `education` to `Education`
+  rename(
+    "Diabetes Status" = diabetes, 
+    "Education" = education,
+    "Mean Age" = mean_age, 
+    "Mean BMI" = mean_bmi
+  ) %>%
+  knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
+```
+
